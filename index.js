@@ -1,6 +1,9 @@
 /* eslint-disable class-methods-use-this */
 /* eslint-disable no-console */
 
+const OUTPUT_AS_JSON = 'json';
+const OUTPUT_AS_TEXT = 'text';
+
 const byDurationDesc = (a, b) => {
   const durationA = a.duration;
   const durationB = b.duration;
@@ -28,11 +31,25 @@ class TimingReporter {
   }
 
   onRunComplete() {
-    const json = JSON.stringify(this.timings.sort(byDurationDesc), null, 2);
+    if (this.timings.length === 0) return;
 
-    if (this.timings.length > 0) {
-      console.log(`Timings for ${this.timings.length} test suites:`);
+    console.log(`Timings for ${this.timings.length} test suites:`);
+
+    if (!this.options.outputAs || this.options.outputAs === OUTPUT_AS_JSON) {
+      const json = JSON.stringify(this.timings.sort(byDurationDesc), null, 2);
       console.log(json);
+    }
+
+    if (this.options.outputAs && this.options.outputAs === OUTPUT_AS_TEXT) {
+      for (let timing of this.timings) {
+        console.log(`${timing.testSuite}: ${timing.duration}`);
+
+        if (timing.testCases && timing.testCases.length > 0) {
+          for (let testCaseTiming of timing.testCases) {
+            console.log(`  ${testCaseTiming.testSuite}: ${testCaseTiming.duration}`);
+          }
+        }
+      }
     }
   }
 

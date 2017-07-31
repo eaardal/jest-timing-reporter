@@ -17,7 +17,7 @@ In jest configuration:
 }
 ```
 
-(The `"default"` entry is to keep the original reporter while also adding jest-timing-reporter).
+(The `"default"` entry is to keep the original reporter while also adding jest-timing-reporter. It's of course optional if you want this or not).
 
 ## Options
 
@@ -36,7 +36,7 @@ The reporter will by default write the duration for each test suite to the conso
 ```
 
 ### `outputAs: string`
-**Possible values:** `json`, `text`.
+**Possible values:** `json` | `text`.  
 **Default:** `json`.
 
 Describes how the result will be printed to the console.
