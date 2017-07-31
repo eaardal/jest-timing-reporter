@@ -35,21 +35,21 @@ class TimingReporter {
 
     console.log(`Timings for ${this.timings.length} test suites:`);
 
-    if (!this.options.outputAs || this.options.outputAs === OUTPUT_AS_JSON) {
-      const json = JSON.stringify(this.timings.sort(byDurationDesc), null, 2);
-      console.log(json);
-    }
-
-    if (this.options.outputAs && this.options.outputAs === OUTPUT_AS_TEXT) {
+    if (!this.options.outputAs || this.options.outputAs === OUTPUT_AS_TEXT) {
       for (let timing of this.timings) {
         console.log(`${timing.testSuite}: ${timing.duration}`);
 
         if (timing.testCases && timing.testCases.length > 0) {
           for (let testCaseTiming of timing.testCases) {
-            console.log(`  ${testCaseTiming.testSuite}: ${testCaseTiming.duration}`);
+            console.log(`  ${testCaseTiming.testCase}: ${testCaseTiming.duration}`);
           }
         }
       }
+    }
+
+    if (this.options.outputAs && this.options.outputAs === OUTPUT_AS_JSON) {
+      const json = JSON.stringify(this.timings.sort(byDurationDesc), null, 2);
+      console.log(json);
     }
   }
 

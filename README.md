@@ -22,7 +22,7 @@ In jest configuration:
 ## Options
 
 ### `verbose: bool`
-**Default:** `false`.
+**Default:** `false`
 
 The reporter will by default write the duration for each test suite to the console. If you wish to also write the duration for each test case under each test suite, add the verbose switch:
 
@@ -36,8 +36,8 @@ The reporter will by default write the duration for each test suite to the conso
 ```
 
 ### `outputAs: string`
-**Possible values:** `json` | `text`.  
-**Default:** `json`.
+**Possible values:** `json` | `text`  
+**Default:** `text`
 
 Describes how the result will be printed to the console.
 
