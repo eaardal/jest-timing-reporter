@@ -49,3 +49,7 @@ Describes how the result will be printed to the console.
   ]
 }
 ```
+
+## Changelog
+
+See [Changelog](./CHANGELOG.md)
