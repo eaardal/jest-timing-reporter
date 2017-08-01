@@ -36,11 +36,11 @@ class TimingReporter {
     console.log(`Timings for ${this.timings.length} test suites:`);
 
     if (!this.options.outputAs || this.options.outputAs === OUTPUT_AS_TEXT) {
-      for (let timing of this.timings) {
+      for (let timing of this.timings.sort(byDurationDesc)) {
         console.log(`${timing.testSuite}: ${timing.duration}`);
 
         if (timing.testCases && timing.testCases.length > 0) {
-          for (let testCaseTiming of timing.testCases) {
+          for (let testCaseTiming of timing.testCases.sort(byDurationDesc)) {
             console.log(`  ${testCaseTiming.testCase}: ${testCaseTiming.duration}`);
           }
         }
